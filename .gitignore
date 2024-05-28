@@ -75,3 +75,5 @@ yarn-error.log
 
 #ruby
 /.bundle/
+/mobile/vendor
+/mobile/.bundle
