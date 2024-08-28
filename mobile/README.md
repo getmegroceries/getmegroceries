@@ -2,6 +2,8 @@
 
 - install xcode and include ios develop environmnet option after opening it for the first time
 
+- if you get errors about not enough files available when you first run `npm run ios` or equivalent, try running `npm install` first.  You may also need to run `brew install watchman`.
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
