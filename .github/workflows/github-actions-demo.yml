@@ -18,6 +18,6 @@ jobs:
           cd server; npm install
       - name: run npm test
         run: |
-          npm test
+          cd server; npm test
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
