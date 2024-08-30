@@ -7,6 +7,7 @@ describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
+    console.log("are we in the before each?")
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -16,6 +17,7 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
+    console.log("in the test")
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
