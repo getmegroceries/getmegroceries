@@ -19,5 +19,8 @@ jobs:
       - name: run npm test
         run: |
           cd server; npm test
+      - name: build docker image
+        run: |
+          cd server; docker build -t gmg-server
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
