@@ -22,5 +22,6 @@ jobs:
       - name: build docker image
         run: |
           cd server; docker build -t gmg-server .
+          aws s3 ls --region us-west-2
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
