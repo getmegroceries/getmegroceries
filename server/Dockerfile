@@ -18,6 +18,8 @@ RUN npm run build
 
 ARG port=3000
 
+RUN echo "Port: $port"
+
 ENV PORT=$port
 
 EXPOSE $port
