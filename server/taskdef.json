@@ -21,4 +21,5 @@
     "family": "codecatalyst-ecs-task-def",
     "memory": "512",
     "networkMode": "awsvpc"
+}
 
