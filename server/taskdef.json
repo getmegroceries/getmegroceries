@@ -1,0 +1,24 @@
+{
+    "executionRoleArn": "arn:aws:iam::690517313378:role/codecatalyst-ecs-task-execution-role",
+    "containerDefinitions": [
+        {
+            "name": "gmg-api",
+            "image": "gmg-api",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "containerPort": 3000
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "family": "codecatalyst-ecs-task-def",
+    "memory": "512",
+    "networkMode": "awsvpc"
+}
