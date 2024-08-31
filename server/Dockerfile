@@ -18,6 +18,8 @@ RUN npm run build
 
 ARG port=3000
 
+ENV PORT=$port
+
 EXPOSE $port
 
 # Start the server using the production build
