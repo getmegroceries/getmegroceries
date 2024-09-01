@@ -47,6 +47,8 @@ $ npm run start:prod
 
 ## Run tests
 
+I'm using [this plugin](https://github.com/jest-community/vscode-jest) for running tests in vscode
+
 ```bash
 # unit tests
 $ npm run test
