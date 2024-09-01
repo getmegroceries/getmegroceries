@@ -26,9 +26,12 @@ export class AppController {
   // create a post request to add a follower
   @Post('/followers')
   addFollower(@Body() followerData: FollowerData, @Headers("x-user-id") userId?: string): void {
+    console.log("wtf")
+    console.log(followerData, userId)
     const { followerId } = followerData;
     if (!userId || !followerId) {
-      throw new BadRequestException("User id and follower id are required");
+      console.log("Uhm")
+      throw new BadRequestException("!User id and follower id are required!");
     }
     if (!this.followers.has(userId)) {
       this.followers.set(userId, []);
