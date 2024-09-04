@@ -24,7 +24,13 @@ export default function Index() {
   );
 
   // Add a function to the onPress prop
-  function onPress() {
+  async function onPress() {
     console.log('Button pressed');
+    const request = new Request('http://localhost:3000/followers')
+    request.headers.set('Content-Type', 'application/json')
+    request.headers.set('x-user-id', '1')
+    const response = await fetch(request)
+    const json = await response.json()
+    console.log("the json", json)
   }
 }

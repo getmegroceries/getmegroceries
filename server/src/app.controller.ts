@@ -1,4 +1,4 @@
-import { BadRequestException, Controller, Get } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Header } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Headers } from '@nestjs/common';
 import { Post, Body } from '@nestjs/common';
@@ -10,7 +10,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  getHello():  HelloResponse {
+    console.log("getting hello")
     return this.appService.getHello();
   }
 
@@ -46,4 +47,9 @@ export class AppController {
 
 interface FollowerData {  
   followerId: string;
+
+}
+
+export interface HelloResponse {
+  msg: string;
 }
