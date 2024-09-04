@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, TextInput, Text, View } from "react-native";
 
 export default function Index() {
   const [id, setId] = useState("");
+  const [followers, setFollowers] = useState<string[]>([]);
+
+  useEffect(() => {
+    const followers = getFollowers().then((data) => {
+      console.log("the followers", data)
+      setFollowers(data);
+      console.log("in use effect")
+    })
+  }, []);
 
   const addFollowerHandler = async () => {
     await onFollowerPress(id);
@@ -28,13 +37,13 @@ export default function Index() {
         defaultValue={id}
         onChangeText={setId}
       />
-      <Text>{id}</Text>
+      <Text>{"Your followers: " + followers}</Text>
       <Button title="Add follower" onPress={addFollowerHandler} />
     </View>
   );
 
   // Add a function to the onPress prop
-  async function onPress() {
+  async function getFollowers() {
     console.log("Button pressed");
     const request = new Request("http://localhost:3000/followers");
     request.headers.set("Content-Type", "application/json");
@@ -42,14 +51,14 @@ export default function Index() {
     try {
       const response = await fetch(request);
       const json = await response.json();
-      console.log("the json", json);
+      return json
     } catch (e) {
       console.log(e);
     }
   }
 
   async function onFollowerPress(id: string) {
-    console.log("Button pressed");
+    console.log("on followers Button pressed");
     const request = new Request("http://localhost:3000/followers", {
       method: "POST",
       headers: {
@@ -61,9 +70,8 @@ export default function Index() {
     request.headers.set("x-user-id", "1");
 
     try {
-      const response = await fetch(request);
-      const json = await response.json();
-      console.log("the json", json);
+      await fetch(request);
+      setFollowers([...followers, id]);
     } catch (e) {
       console.log(e);
     }

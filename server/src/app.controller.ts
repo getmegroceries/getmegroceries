@@ -10,15 +10,15 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): HelloResponse {
-    console.log('getting hello');
+  getHello():  HelloResponse {
+    console.log("getting hello")
     return this.appService.getHello();
   }
 
   @Get('/followers')
-  getFollowers(@Headers('x-user-id') userId?: string): string[] {
+  getFollowers(@Headers("x-user-id") userId?: string): string[] {
     if (!userId) {
-      throw new BadRequestException('User id is required');
+      throw new BadRequestException("User id is required");
     }
     // get user id from header
     return this.followers.get(userId) || [];
@@ -26,16 +26,12 @@ export class AppController {
 
   // create a post request to add a follower
   @Post('/followers')
-  addFollower(
-    @Body() followerData: FollowerData,
-    @Headers('x-user-id') userId?: string,
-  ): void {
-    console.log('wtf');
-    console.log(followerData, userId);
+  addFollower(@Body() followerData: FollowerData, @Headers("x-user-id") userId?: string): void {
+    console.log("wtf")
+    console.log(followerData, userId)
     const { followerId } = followerData;
     if (!userId || !followerId) {
-      console.log('Uhm');
-      throw new BadRequestException('!User id and follower id are required!');
+      throw new BadRequestException("!User id and follower id are required!");
     }
     if (!this.followers.has(userId)) {
       this.followers.set(userId, []);
@@ -45,10 +41,12 @@ export class AppController {
       followers.push(followerId);
     }
   }
+
 }
 
-interface FollowerData {
+interface FollowerData {  
   followerId: string;
+
 }
 
 export interface HelloResponse {
