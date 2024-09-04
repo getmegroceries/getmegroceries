@@ -6,6 +6,7 @@ declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   const configService = app.get(ConfigService);
   const PORT = configService.get('PORT') || 3000;
   console.log(`Server running on http://localhost:${PORT}`);
