@@ -64,6 +64,6 @@ jobs:
         run: |
           cd infra
           npm install
-          npx cdk deploy --require-approval never --outputs-file $GITHUB_ENV --context image=$IMAGE_TAG
+          npx cdk deploy --require-approval never --context image=$IMAGE_TAG
         env: 
           IMAGE_TAG: ${{ github.sha }}
