@@ -11,7 +11,7 @@ export class InfraStack extends cdk.Stack {
 
     new ecsp.ApplicationLoadBalancedFargateService(this, 'gmg', {
       taskImageOptions: {
-        image: ecs.ContainerImage.fromEcrRepository(repository, process.env.GMG_TAG || "latest"),
+        image: ecs.ContainerImage.fromEcrRepository(repository, process.env.IMAGE_TAG || "latest"),
       },
       publicLoadBalancer: true
     });
