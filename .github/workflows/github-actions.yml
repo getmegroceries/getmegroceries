@@ -66,4 +66,4 @@ jobs:
           npm install
           npx cdk deploy --require-approval never --outputs-file $GITHUB_ENV --context image=$GITHUB_OUTPUT
         env: 
-          IMAGE_TAG: ${{ steps.build-image.outputs.IMAGE_TAG }}
+          IMAGE_TAG: ${{ steps.build-image.outputs.image }}
