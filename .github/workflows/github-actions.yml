@@ -61,6 +61,6 @@ jobs:
 
       - name: Run CDK deploy with the image tag from the previous step
         id: task-def
-        run: cd infra && cdk deploy --require-approval never --outputs-file $GITHUB_ENV --context image=$GITHUB_OUTPUT
+        run: cd infra && npx cdk deploy --require-approval never --outputs-file $GITHUB_ENV --context image=$GITHUB_OUTPUT
         env: 
           IMAGE_TAG: ${{ steps.build-image.outputs.IMAGE_TAG }}
